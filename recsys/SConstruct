@@ -1,0 +1,11 @@
+import subprocess
+import sys
+
+env = Environment(CPPPATH=["./third_party/include"],
+                  CXX='/usr/local/bin/g++-4.9',
+                  CXXFLAGS='-fopenmp -msse4.2 -std=c++11 -DOS_LINUX -g -Wall -Wextra -DNDEBUG',
+                  LIBPATH=['./third_party/lib'],
+                  LIBS=['gflags', 'tbb', 'gtest'],
+                  RPATH=['third_party/lib'])
+
+env.Program('cf', ['src/utils.cc', 'src/simple_cf.cc'])
